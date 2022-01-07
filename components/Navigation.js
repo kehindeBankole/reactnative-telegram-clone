@@ -3,15 +3,16 @@ import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createDrawerNavigator } from "@react-navigation/drawer";
-
+import { FontAwesome } from "@expo/vector-icons";
+import { colors } from "../constants/colors";
 const Drawer = createDrawerNavigator();
 const Stack = createNativeStackNavigator();
 export default function Navigation() {
   function Home() {
     return (
       <View style={{ flex: 1, backgroundColor: "yellow" }}>
-        <TouchableOpacity>
-          <Text>ssd</Text>
+        <TouchableOpacity onPress={() => console.log(colors)}>
+          <Text>click</Text>
         </TouchableOpacity>
       </View>
     );
@@ -36,8 +37,19 @@ export default function Navigation() {
       <Drawer.Navigator>
         <Drawer.Screen
           options={{
-            headerTitleStyle: { color: "white" },
-            headerStyle: { backgroundColor: "black" },
+            headerRight: ({}) => (
+              <View style={{ marginRight: 15 }}>
+                <TouchableOpacity>
+                  <FontAwesome name="search" size={24} color="white" />
+                </TouchableOpacity>
+              </View>
+            ),
+            headerTitleStyle: {
+              color: "white",
+              fontFamily: "SplineSemiBold",
+              fontSize: 25,
+            },
+            headerStyle: { backgroundColor: `${colors.darkcornflower}` },
             headerShadowVisible: true,
             headerTintColor: "white",
             drawerStyle: {
@@ -47,7 +59,7 @@ export default function Navigation() {
               borderRightColor: "#21282D",
             },
           }}
-          name="KENEGRAM"
+          name="Kenegram"
           component={MyStack}
         />
       </Drawer.Navigator>
