@@ -4,6 +4,8 @@ const colors = {
   brightgray: "#E6E9EF",
   celestialblue: "#4995BE",
   macandcheese: "#F9CA89",
+  white: "white",
+  border: "#8C8C8C",
 };
 
 export { colors };

@@ -1,24 +1,52 @@
 import React from "react";
-import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  Button,
+  StatusBar,
+  Dimensions,
+  Image,
+} from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { FontAwesome } from "@expo/vector-icons";
 import { colors } from "../constants/colors";
+import Home from "../screens/Home";
 const Drawer = createDrawerNavigator();
 const Stack = createNativeStackNavigator();
 export default function Navigation() {
-  function Home() {
-    return (
-      <View style={{ flex: 1, backgroundColor: "yellow" }}>
-        <TouchableOpacity onPress={() => console.log(colors)}>
-          <Text>click</Text>
-        </TouchableOpacity>
-      </View>
-    );
-  }
   function Notifications() {
     return <View></View>;
+  }
+
+  function CustomDrawerContent({ navigation }) {
+    return (
+      <View
+        style={{
+          flexDirection: "column",
+        }}
+      >
+        <View
+          style={{
+            height: 150,
+            backgroundColor: `${colors.celestialblue}`,
+            paddingTop: 30,
+            paddingHorizontal: 20,
+          }}
+        >
+          <View>
+            <Image
+              style={{ width: 70, height: 70, borderRadius: 100 }}
+              source={require("../assets/kakashi.jpg")}
+            />
+          </View>
+        </View>
+        <View></View>
+      </View>
+    );
   }
 
   function MyStack() {
@@ -34,7 +62,9 @@ export default function Navigation() {
   }
   return (
     <NavigationContainer>
-      <Drawer.Navigator>
+      <Drawer.Navigator
+        drawerContent={(props) => <CustomDrawerContent {...props} />}
+      >
         <Drawer.Screen
           options={{
             headerRight: ({}) => (
@@ -46,17 +76,17 @@ export default function Navigation() {
             ),
             headerTitleStyle: {
               color: "white",
-              fontFamily: "SplineSemiBold",
+              fontFamily: "MuktaSemiBold",
               fontSize: 25,
             },
-            headerStyle: { backgroundColor: `${colors.darkcornflower}` },
+            headerStyle: { backgroundColor: `${colors.celestialblue}` },
             headerShadowVisible: true,
             headerTintColor: "white",
             drawerStyle: {
-              backgroundColor: "#0C0E13",
-              width: 240,
-              borderWidth: 1,
-              borderRightColor: "#21282D",
+              backgroundColor: colors.white,
+              width: Dimensions.get("window").width - 100,
+              // borderWidth: 1,
+              //borderRightColor: "white",
             },
           }}
           name="Kenegram"
