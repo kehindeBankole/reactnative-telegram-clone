@@ -12,7 +12,7 @@ import {
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createDrawerNavigator } from "@react-navigation/drawer";
-import { FontAwesome } from "@expo/vector-icons";
+import { FontAwesome, FontAwesome5 } from "@expo/vector-icons";
 import { colors } from "../constants/colors";
 import Home from "../screens/Home";
 const Drawer = createDrawerNavigator();
@@ -37,11 +37,20 @@ export default function Navigation() {
             paddingHorizontal: 20,
           }}
         >
-          <View>
+          <View
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "space-between",
+            }}
+          >
             <Image
               style={{ width: 70, height: 70, borderRadius: 100 }}
               source={require("../assets/kakashi.jpg")}
             />
+            <TouchableOpacity style={{ marginTop: 7 }}>
+              <FontAwesome5 name="moon" size={20} color="white" />
+            </TouchableOpacity>
           </View>
         </View>
         <View></View>
