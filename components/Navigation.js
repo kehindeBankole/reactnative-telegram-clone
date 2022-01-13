@@ -12,7 +12,7 @@ import {
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createDrawerNavigator } from "@react-navigation/drawer";
-import { FontAwesome, FontAwesome5 } from "@expo/vector-icons";
+import { FontAwesome, FontAwesome5, AntDesign } from "@expo/vector-icons";
 import { colors } from "../constants/colors";
 import Home from "../screens/Home";
 const Drawer = createDrawerNavigator();
@@ -31,7 +31,7 @@ export default function Navigation() {
       >
         <View
           style={{
-            height: 150,
+            height: 170,
             backgroundColor: `${colors.celestialblue}`,
             paddingTop: 30,
             paddingHorizontal: 20,
@@ -52,8 +52,52 @@ export default function Navigation() {
               <FontAwesome5 name="moon" size={20} color="white" />
             </TouchableOpacity>
           </View>
+
+          <View
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "space-between",
+              marginTop: 15,
+            }}
+          >
+            <View>
+              <Text
+                style={{
+                  fontFamily: "MuktaMedium",
+                  color: colors.white,
+                  fontSize: 18,
+                }}
+              >
+                Kehinde
+              </Text>
+              <Text style={{ fontFamily: "MuktaMedium", color: "black" }}>
+                +234 9017533098
+              </Text>
+            </View>
+            <TouchableOpacity style={{ alignSelf: "center" }}>
+              <AntDesign name="arrowdown" size={20} color="white" />
+            </TouchableOpacity>
+          </View>
         </View>
-        <View></View>
+        <View style={{ padding: 10, marginTop: 5 }}>
+          {[1, 2, 3, 4, 5, 6].map((element, index) => (
+            <View style={{ flexDirection: "row", marginBottom: 20 }}>
+              <FontAwesome5 name="users" size={24} color={colors.brightgray} />
+              <Text
+                style={{
+                  fontFamily: "MuktaMedium",
+                  color: "black",
+                  marginLeft: 20,
+                  fontSize: 17,
+                  textTransform: "capitalize",
+                }}
+              >
+                New group
+              </Text>
+            </View>
+          ))}
+        </View>
       </View>
     );
   }
